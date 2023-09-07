@@ -4,4 +4,4 @@ Septimo proyecto del curso de Vue, este proyecto ya incluye un Stack con más he
 
 ## Para ver la web haga click en la siguiente URL:
 
-
+https://jolly-lolly-61c74d.netlify.app
