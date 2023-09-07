@@ -1,4 +1,4 @@
-import { ref, reactive, onMounted } from "vue"
+import { ref, reactive, computed, onMounted } from "vue"
 import { defineStore } from "pinia"
 import apiService from '../services/APIService'
 import { useModalStore } from "./modal"
@@ -29,12 +29,15 @@ export let useBebidasStore = defineStore('bebidas', () => {
         modal.handleClickModal()
     }
 
+    let noBebidas = computed(() => bebidas.value.length === 0)
+
     return {
         categorias,
         busqueda,
         obtenerBebidas,
         bebidas,
         obtenerReceta,
-        receta
+        receta,
+        noBebidas
     }
 })

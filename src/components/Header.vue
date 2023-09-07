@@ -2,15 +2,25 @@
     import { computed } from 'vue'
     import { RouterLink, useRoute } from 'vue-router'
     import { useBebidasStore } from '../stores/bebidas'
+    import { useNotificacionStore } from '../stores/notificaciones'
     
     let route = useRoute()
     let store = useBebidasStore()
+    let notificaciones = useNotificacionStore()
 
     let paginaInicio = computed(() => route.name === 'inicio')
 
     let handleSubmit = () => {
-        //TODO: validar
-
+        if(Object.values(store.busqueda).includes('')) {
+            //Se puede usar $state
+            notificaciones.$patch({
+                texto: 'Todos los campos son obligatorios',
+                mostrar: true,
+                error: true
+            })
+            return
+        }
+        
         store.obtenerBebidas()
     }
 </script>
